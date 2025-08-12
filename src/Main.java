@@ -1,11 +1,12 @@
 import model.CodeMaker;
+import view.View;
+
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        CodeMaker codemaker = new CodeMaker();
-        codemaker.setSecretCode();
-
-
+    View view = new View();
+    view.displayInstructions();
 
     }
 }
