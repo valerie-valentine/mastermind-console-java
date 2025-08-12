@@ -4,9 +4,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Arrays;
 
 public class CodeMaker {
-    private char[] secretcode;
+    private String[] secretcode;
     int codelength;
 
 //   public CodeMaker(int codeLength) {
@@ -14,7 +15,7 @@ public class CodeMaker {
 //    }
 
     // Generic class that requires a type argument indicating the type of the response
-    public String setSecretCode () {
+    public String[] setSecretCode () {
         HttpResponse<String> response = null;
         HttpClient client = HttpClient.newHttpClient();
 
@@ -31,8 +32,11 @@ public class CodeMaker {
 
         if (response != null){
             String body = response.body();
-            System.out.println(body);
-            return body;
+            // splitting into an array of strings here while splitting the response by line breaks
+            String[] result = body.split("\\R");
+            // have to use wrapper class method
+            System.out.println(Arrays.toString(result));
+            return result;
         }
         return null;
     }
