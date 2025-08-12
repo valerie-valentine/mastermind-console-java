@@ -1,14 +1,14 @@
 package model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Board {
     private int attempts = 10;
     private String[] answer;
-    private ArrayList<Guess> guessHistory;
+    private ArrayList<Guess> guessHistory = new ArrayList<>();
     private String gameStatus = "In Progress";
 
     public Board(String[] answer) {
@@ -39,7 +39,20 @@ public class Board {
         guess.setCorrectLocation(correctLocation);
     }
 
+    public void submitUserGuess (Guess guess) {
+        this.guessHistory.add(guess);
 
+        if (Arrays.equals(guess.getGuess(), answer)) {
+            this.gameStatus = "Won";
+        }else {
+            this.attempts--;
+            if (this.attempts == 0) {
+                this.gameStatus = "Loss";
+            }
+        }
+    }
+
+    // Does this handle the case if you win on your last attempt?
 
 
 
