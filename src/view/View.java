@@ -38,11 +38,11 @@ public class View {
 
 
             if (userInput.equals("easy")) {
-                return "easy";
+                return "EASY";
             } else if (userInput.equals("medium")) {
-                return "medium";
+                return "MEDIUM";
             } else if (userInput.equals("hard")) {
-                return "hard";
+                return "HARD";
             } else {
                 System.out.println("Invalid input. Please enter a valid choice: easy, medium, hard.\n");
             }

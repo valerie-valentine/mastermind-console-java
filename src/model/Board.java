@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Board {
-    private int attempts = 10;
-    private String[] answer;
+    public int attempts = 10;
+    public String[] answer;
     private ArrayList<Guess> guessHistory = new ArrayList<>();
     private String gameStatus = "In Progress";
 
