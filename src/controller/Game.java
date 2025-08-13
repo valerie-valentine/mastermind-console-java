@@ -1,6 +1,6 @@
 package controller;
 
-import model.Board;
+import model.ClassicBoard;
 import model.CodeMaker;
 import model.DifficultyLevel;
 import model.Guess;
@@ -9,7 +9,7 @@ import view.View;
 
 public class Game {
     private View view;
-    private Board board;
+    private ClassicBoard board;
 
     public Game () {
         this.view = new View();
@@ -23,7 +23,7 @@ public class Game {
         this.view.showDebugCode(secretCode);
 
         if (secretCode != null) {
-            this.board = new Board(secretCode);
+            this.board = new ClassicBoard(secretCode);
             playGame(codeLength);
         } else {
             view.showMessage("Oops! We couldn’t generate the secret code. Please try again.");
