@@ -3,31 +3,36 @@ package view;
 import java.util.Scanner;
 
 public class View {
-    Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public void displayInstructions() {
+        System.out.println(AsciiArt.GAME_LOGO);
         System.out.println("Welcome to Mastermind!");
         System.out.println("Play against the computer and break the code to win.");
         System.out.println("A random number from the digits 0-9 will be generated based on your chosen level.");
         System.out.println("You will have 10 attempts to guess the number.");
         System.out.println("Hints will be provided to help you along the way.");
-        System.out.println("Good luck!");
+        System.out.println("Good luck!\n");
+    }
+
+    public void showDebugCode(String[] secretCode) {
+        System.out.println("Debugging String: " + String.join("", secretCode));
     }
 
     public void showMessage(String message) {
         System.out.println(message);
     }
 
-    public void showLivesRemaining(int lives) {
-        System.out.println("You have " + lives + " lives remaining.");
+    public void showAttemptsRemaining(int lives) {
+        System.out.println("You have " + lives + " lives remaining.\n");
 
     }
 
     public void showGuessFeedback(int correctNumber, int correctLocation){
         if (correctNumber == 0 && correctLocation == 0) {
-            System.out.println("All incorrect.");
+            System.out.println("All incorrect.\n");
         } else {
-            System.out.println(correctNumber + " correct number/s " + correctLocation + " correct location/s.");
+            System.out.println(correctNumber + " correct number " + correctLocation + " correct location\n");
         }
     }
 
@@ -79,20 +84,16 @@ public class View {
 
         }
     }
-//
-//
+
     public void showGameOver(boolean won, String answer){
         if (won) {
+            System.out.println(AsciiArt.WIN_LOGO);
             System.out.println("Congrats! You won :)." );
             System.out.println("The answer was " + answer + ".");
         } else {
+            System.out.println(AsciiArt.LOST_LOGO);
             System.out.println("Sorry! You lost :<.");
             System.out.println("The answer was " + answer + ".");
         }
     }
 }
-
-
-
- // modify showGuessFeedback to change to plural when int greater than one - check if num is 1 and then change (ternary operator?)
-// think about how to handle spaces

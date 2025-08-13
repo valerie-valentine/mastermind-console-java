@@ -6,13 +6,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Board {
-    public int attempts = 10;
-    public String[] answer;
-    private ArrayList<Guess> guessHistory = new ArrayList<>();
+    private int attempts = 10;
+    private final String[] answer;
+    private final ArrayList<Guess> guessHistory = new ArrayList<>();
     private String gameStatus = "In Progress";
 
     public Board(String[] answer) {
         this.answer = answer;
+    }
+
+    public boolean hasGuessBeenPlayed (Guess newGuess) {
+        for (Guess previousGuess: guessHistory ) {
+            if (Arrays.equals(previousGuess.getGuess(), newGuess.getGuess())){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void evaluateUserGuess(Guess guess) {
@@ -47,16 +56,20 @@ public class Board {
         }else {
             this.attempts--;
             if (this.attempts == 0) {
-                this.gameStatus = "Loss";
+                this.gameStatus = "Lost";
             }
         }
     }
 
-    // Does this handle the case if you win on your last attempt?
+    public int getAttempts(){
+        return this.attempts;
+    }
 
+    public String getAnswer() {
+        return String.join("", this.answer);
+    }
 
-
-
-
-
+    public String getGameStatus() {
+        return this.gameStatus;
+    }
 }

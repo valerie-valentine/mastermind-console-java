@@ -30,11 +30,7 @@ public class CodeMaker {
         } else {
             System.out.println("Error: Random Number API Service unavailable. Status Code: " + response.statusCode() + ".");
             return null;
-            // have to use wrapper class method
-//            System.out.println(Arrays.toString(result));
         }
     }
 }
 
-// Note: handle explicitly printing out the correct errors and then use a catch all.
-// For example: when the api in unavailable 503 - overloaded

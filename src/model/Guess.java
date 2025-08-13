@@ -28,4 +28,9 @@ public class Guess {
     public int getCorrectNumber(){
         return correctNumber;
     }
+
+//    @Override
+//    public String toString() {
+//        return String.join("", guess);
+//    }
 }
