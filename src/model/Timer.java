@@ -6,9 +6,11 @@ public class Timer {
         int seconds = minutes * 60;
 
         while (seconds > 0) {
+            int displayMinutes = seconds / 60;
+            int displaySeconds = seconds % 60;
+            System.out.printf("Time left: %02d:%02d\n", displayMinutes, displaySeconds);
             Thread.sleep(1000);
             seconds--;
-            System.out.println(seconds);
             }
 
             System.out.println("Time's up!");
