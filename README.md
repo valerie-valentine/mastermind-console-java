@@ -22,17 +22,22 @@ Mastermind is a classic code-breaking game where your goal is to crack the corre
 While reattempting this take-home challenge, my main goal was to build a fresh Java implementation of my console application. As a beginner in Java, I wanted it to differ significantly from my original Python script by fully embracing object-oriented programming, encapsulation, and core Java features such as Interfaces and Enums.
 
 I also introduced Wrapper classes to reduce code repetition while allowing class-specific implementations. My models were refactored and simplified to follow stricter MVC principles. For example, in my earlier version, the view layer handled some game logic validation that belonged in the model layer. Now, the view is responsible only for basic input checks (like type and length), while all game logic validation resides in the business classes where it belongs.
-    
-    Model (Data Layer)
-        The Model serves as the data layer and incorporates all game-related business logic.
 
-    Controller (Translation Layer)
-        The Controller acts as an intermediary between the Model and the View, ensuring these two layers do not directly interact.
-        Its responsibility is to process input, retrieve relevant data from the Model, and determine what the View should display.
+## MVC Pattern
+    ┌─────────┐
+    │  View   │  ← Handles user input & displays output
+    └─────────┘
+         │
+         ▼
+    ┌────────────┐
+    │ Controller │  ← Processes input, interacts with Model, updates View
+    └────────────┘
+         │
+         ▼
+    ┌─────────┐
+    │  Model  │  ← Contains game data & business logic
+    └─────────┘
 
-    View (Presentation Layer)
-        The View retrieves user input and displays output to the user.
-        It is responsible for all user-facing interactions, such as displaying instructions, feedback, and game progress.
         
 ## Challenges
 The biggest challenge this time was programming in a brand-new language. I wanted to push myself to learn something new, so I chose Java. Coming from a Python background, the learning curve was steep—especially with syntax, access modifiers, and strict type-checking. Many of my Python approaches simply didn’t translate, which meant lots of research, trial and error, and rethinking solutions. In the end, I was able to connect my Python and OOP knowledge to build a working Java console game.
@@ -49,10 +54,23 @@ For the sound, I ran into Git issues when pushing large .wav files, which broke 
 - Sound
 
 ## Setup for Sound:
-- 
+1. Download the sound files from the provided link: [Download Sound Files](https://drive.google.com/drive/u/1/folders/1nba79lD1ssuzldGqzl9YVzLtVmqnG_LW)
+2. Add the files to the resources package in your project.
+2. Uncomment the following lines in Game.java:
+```java
+// private SoundPlayer soundPlayer;
+// this.soundPlayer = new SoundPlayer();
+// String soundFile = board.getBackgroundSoundFile();
+// if (soundFile != null) {
+//     soundPlayer.playSound(soundFile);
+// }
+// soundPlayer.stopSound();
+```
+4. Run the Java program.
+
 
 ## How to Play:
-1. Run the `main.py` script in your Java environment.
+1. Run the `main.java` file in your Java environment.
 2. The game will start, and you will be prompted to choose a game mode: CLASSIC or TIMED.
 3. Then to choose a difficulty level: easy, medium, or hard.
 4. You will have 10 attempts to guess the correct number combination based on the chosen difficulty level:
@@ -69,5 +87,5 @@ For the sound, I ran into Git issues when pushing large .wav files, which broke 
 ### Future updates:
 - Currently supports multiple board types and future modes (Some ideas: emoji codes & words)
 - Integrate my mastermind web API with the Java client to store user accounts.
-- A menu & option to stop sound
+- A menu & option to select background sound or not
 - Mutli-player mode
