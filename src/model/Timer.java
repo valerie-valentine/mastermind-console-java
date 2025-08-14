@@ -8,7 +8,7 @@ public class Timer {
         while (seconds > 0) {
             int displayMinutes = seconds / 60;
             int displaySeconds = seconds % 60;
-            System.out.printf("Time left: %02d:%02d\n", displayMinutes, displaySeconds);
+            System.out.printf("\rTime left: %02d:%02d", displayMinutes, displaySeconds);
             Thread.sleep(1000);
             seconds--;
             }
