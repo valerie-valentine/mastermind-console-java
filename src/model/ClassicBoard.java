@@ -72,10 +72,12 @@ public class ClassicBoard implements Board {
     public String getAnswer() {
         return String.join("", this.answer);
     }
+
     @Override
     public String getGameStatus() {
         return this.gameStatus;
     }
+
     @Override
     public String getBackgroundSoundFile() {
         return "src/resources/classic.wav";

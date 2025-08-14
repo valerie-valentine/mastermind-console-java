@@ -33,7 +33,7 @@ public class Game {
             board = new ClassicBoard(secretCode);
             view = new ClassicUI();
         } else if (mode.equals("TIMED")) {
-            Timer timer = new Timer(30);
+            Timer timer = new Timer(20);
             board = new TimedBoard(secretCode, timer);
             view = new TimedUI();
             ((TimedBoard) board).startTimer();
@@ -44,7 +44,7 @@ public class Game {
 //            soundPlayer.playSound(soundFile);
 //        }
         view.showDebugCode(secretCode);
-//        playGame(codeLength);
+        playGame(codeLength);
     }
 
     public void playGame(int codeLength) {
