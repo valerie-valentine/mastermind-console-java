@@ -42,11 +42,11 @@ I also introduced Wrapper classes to reduce code repetition while allowing class
 
         
 ## Challenges
-The biggest challenge this time was programming in a brand-new language. I wanted to push myself to learn something new, so I chose Java. Coming from a Python background, the learning curve was steep—especially with syntax, access modifiers, and strict type-checking. Many of my Python approaches simply didn’t translate, which meant lots of research, trial and error, and rethinking solutions. In the end, I was able to connect my Python and OOP knowledge to build a working Java console game.
+The biggest challenge this time was programming in a brand-new language. I wanted to push myself to learn something new, so I chose Java. Coming from a Python background, the learning curve was steep — especially with syntax, access modifiers, and strict type-checking. Many of my Python approaches simply didn’t translate, which meant lots of research, trial and error, and rethinking solutions. In the end, I was able to connect my Python and OOP knowledge to build a working Java console game.
 
 I also set out to add two new extensions: a timer and background sound. Both were challenging for different reasons.
 
-For the timer, my initial goal was to have it display feedback alongside the game’s console output in real time. This would have required a deeper understanding of concurrent console output—something I’m not quite ready for—so I simplified it to display after each guess. I still wanted the timer to run independently and notify the game when time was up, so I learned the basics of threading. This gave me my first hands-on experience with multi-threading in Java.
+For the timer, my initial goal was to have it display feedback alongside the game’s console output in real time. This would have required a deeper understanding of concurrent console output — something I’m not quite ready for — so I simplified it to display after each guess. I still wanted the timer to run independently and notify the game when time was up, so I learned the basics of threading. This gave me my first hands-on experience with multi-threading in Java.
 
 For the sound, I ran into Git issues when pushing large .wav files, which broke my workflow. I had to remove them to continue development, but I plan to link the files separately. It was a quick but important reminder about what types of files should be excluded from Git.
 
