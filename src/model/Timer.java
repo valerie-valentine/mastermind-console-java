@@ -12,7 +12,7 @@ public class Timer {
             Thread.sleep(1000);
             seconds--;
             }
-
+            System.out.println();
             System.out.println("Time's up!");
         }
     }
