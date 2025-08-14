@@ -81,8 +81,11 @@ public class TimedBoard implements Board {
         return this.gameStatus;
     }
 
-    public void startTimer() {
-        new Thread(timer).start();
+    public Timer getTimer(){
+        return this.timer;
     }
 
+    public void startTimer() {
+        new Thread(this.timer).start();
+    }
 }

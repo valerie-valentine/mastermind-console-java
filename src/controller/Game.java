@@ -27,7 +27,7 @@ public class Game {
                 board = new ClassicBoard(secretCode);
                 view = new ClassicUI();
             } else if (mode.equals("TIMED")) {
-                Timer timer = new Timer(20);
+                Timer timer = new Timer(10);
                 board = new TimedBoard(secretCode, timer);
                 view = new TimedUI();
                 ((TimedBoard) board).startTimer();
@@ -51,6 +51,10 @@ public class Game {
 
             this.board.evaluateUserGuess(userGuess);
             this.view.showGuessFeedback(userGuess.getCorrectNumber(), userGuess.getCorrectLocation());
+
+            if (board instanceof TimedBoard timedBoard) {
+                view.showMessage(timedBoard.getTimer().getTimeLeft());
+            }
             this.board.submitUserGuess(userGuess);
         }
 
