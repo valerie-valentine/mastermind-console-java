@@ -7,6 +7,7 @@ public interface Board {
     int getAttempts();
     String getAnswer();
     String getGameStatus();
+    String getBackgroundSoundFile();
 }
 
 // might repurpose getAttempts to be the time left in time mode

@@ -76,4 +76,8 @@ public class ClassicBoard implements Board {
     public String getGameStatus() {
         return this.gameStatus;
     }
+    @Override
+    public String getBackgroundSoundFile() {
+        return "src/resources/classic.wav";
+    }
 }

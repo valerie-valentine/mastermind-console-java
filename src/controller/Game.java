@@ -9,33 +9,42 @@ import view.TimedUI;
 public class Game {
     private GameUI view;
     private Board board;
+//    private SoundPlayer soundPlayer;
 
     public Game () {
         this.view = new ClassicUI();
+//        this.soundPlayer = new SoundPlayer();
     }
 
     public void startGame() {
         this.view.displayInstructions();
-        String mode = view.getGameMode();
+        String mode = view.getGameMode();   // CLASSIC, TIMED, EMOJI
         String levelInput = view.getDifficultyLevel();
         int codeLength = DifficultyLevel.valueOf(levelInput).getCodeLength();
         String[] secretCode = CodeMaker.generateRandomCode(codeLength);
-        this.view.showDebugCode(secretCode);
 
-        if (secretCode != null) {
-            if (mode.equals("CLASSIC")) {
-                board = new ClassicBoard(secretCode);
-                view = new ClassicUI();
-            } else if (mode.equals("TIMED")) {
-                Timer timer = new Timer(10);
-                board = new TimedBoard(secretCode, timer);
-                view = new TimedUI();
-                ((TimedBoard) board).startTimer();
-            }
-            playGame(codeLength);
-        } else {
-            view.showMessage("Oops! We couldn’t generate the secret code. Please try again.");
+
+        if (secretCode == null) {
+            view.showMessage("Oops! Couldn’t generate the secret code. Please try again.");
+            return;
         }
+
+        if (mode.equals("CLASSIC")) {
+            board = new ClassicBoard(secretCode);
+            view = new ClassicUI();
+        } else if (mode.equals("TIMED")) {
+            Timer timer = new Timer(30);
+            board = new TimedBoard(secretCode, timer);
+            view = new TimedUI();
+            ((TimedBoard) board).startTimer();
+        }
+
+//        String soundFile = board.getBackgroundSoundFile();
+//        if (soundFile != null) {
+//            soundPlayer.playSound(soundFile);
+//        }
+        view.showDebugCode(secretCode);
+//        playGame(codeLength);
     }
 
     public void playGame(int codeLength) {
@@ -59,6 +68,7 @@ public class Game {
         }
 
         checkIfGameOver();
+//        soundPlayer.stopSound();
         restartGame();
     }
 
