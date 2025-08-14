@@ -9,5 +9,3 @@ public interface Board {
     String getGameStatus();
     String getBackgroundSoundFile();
 }
-
-// might repurpose getAttempts to be the time left in time mode

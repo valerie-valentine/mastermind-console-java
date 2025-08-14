@@ -9,7 +9,6 @@ public class CodeMaker {
     private static final HttpClient CLIENT = HttpClient.newHttpClient();
 
     public static String[] generateRandomCode (int codelength) {
-        // Generic class that requires a type argument indicating the type of the response
         HttpResponse<String> response = null;
         String baseUrl = "https://www.random.org/integers/?num=" + codelength + "&min=0&max=9&col=1&base=10&format=plain&rnd=new";
 

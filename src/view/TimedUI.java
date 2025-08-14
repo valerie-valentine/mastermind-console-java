@@ -14,8 +14,16 @@ public class TimedUI implements GameUI {
 
     @Override
     public void displayInstructions() {
-        classicUI.displayInstructions();
-        System.out.println("***********You are playing in TIMED mode. You'll only have 15 seconds to guess the number!!! Watch the clock!***********\n");
+        System.out.println(AsciiArt.GAME_LOGO_2);
+        System.out.println("Welcome to Mastermind!");
+        System.out.println("******************************TIMED MODE******************************");
+        System.out.println("A secret code has been locked away by the computer.");
+        System.out.println("Your mission: break the code and save the world!");
+        System.out.println("A number from 0-9 has been chosen based on your level.");
+        System.out.println("You have 10 guesses to crack it.");
+        System.out.println("But beware! In TIMED MODE, the clock is ticking....");
+        System.out.println("You only have 30 seconds to guess before we all go KABOOM!");
+        System.out.println("Good luck, agent. The world is counting on you!\n");
     }
 
     @Override
@@ -56,7 +64,7 @@ public class TimedUI implements GameUI {
     @Override
     public void showGameOver(String gameResult, String answer) {
         if (gameResult.equals("LOSS TIME")) {
-            System.out.println(AsciiArt.LOST_LOGO);
+            System.out.println(AsciiArt.TIME_UP_LOGO);
             System.out.println("YOU RAN OUT OF TIME!!!!!!!!!!");
             System.out.println("Sorry!! You lose!!!!");
             System.out.println("The answer was " + answer + ".");

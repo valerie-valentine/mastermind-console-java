@@ -5,7 +5,7 @@ public class Guess {
     private int correctNumber;
     private int correctLocation;
 
-    public Guess(String[] guess){
+    public Guess(String[] guess) {
         this.guess = guess;
     }
 
@@ -25,12 +25,7 @@ public class Guess {
         return correctLocation;
     }
 
-    public int getCorrectNumber(){
+    public int getCorrectNumber() {
         return correctNumber;
     }
-
-//    @Override
-//    public String toString() {
-//        return String.join("", guess);
-//    }
 }
