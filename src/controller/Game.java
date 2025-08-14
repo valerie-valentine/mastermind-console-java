@@ -17,8 +17,7 @@ public class Game {
     }
 
     public void startGame() {
-        this.view.displayInstructions();
-        String mode = view.getGameMode();   // CLASSIC, TIMED, EMOJI
+        String mode = view.getGameMode();
         String levelInput = view.getDifficultyLevel();
         int codeLength = DifficultyLevel.valueOf(levelInput).getCodeLength();
         String[] secretCode = CodeMaker.generateRandomCode(codeLength);
@@ -32,11 +31,13 @@ public class Game {
         if (mode.equals("CLASSIC")) {
             board = new ClassicBoard(secretCode);
             view = new ClassicUI();
+            this.view.displayInstructions();
         } else if (mode.equals("TIMED")) {
             Timer timer = new Timer(20);
             board = new TimedBoard(secretCode, timer);
             view = new TimedUI();
             ((TimedBoard) board).startTimer();
+            this.view.displayInstructions();
         }
 
 //        String soundFile = board.getBackgroundSoundFile();
