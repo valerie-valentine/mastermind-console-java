@@ -44,7 +44,6 @@ public class Game {
 //        if (soundFile != null) {
 //            soundPlayer.playSound(soundFile);
 //        }
-//        view.showDebugCode(secretCode);
         playGame(codeLength);
     }
 
