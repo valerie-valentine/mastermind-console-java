@@ -3,18 +3,17 @@ package model;
 public class Timer implements Runnable {
     int minutes;
     private volatile boolean isTimeUp = false;
+    private int time;
 
-    public Timer (int minutes) {
-        this.minutes = minutes;
+    public Timer (int seconds) {
+        this.time = seconds;
     }
 
     @Override
     public void run() {
-        int seconds = minutes * 60;
-
-        while (seconds > 0) {
-            int displayMinutes = seconds / 60;
-            int displaySeconds = seconds % 60;
+        while (this.time > 0) {
+            int displayMinutes = time / 60;
+            int displaySeconds = time % 60;
 //            System.out.printf("\rTime left: %02d:%02d", displayMinutes, displaySeconds);
 
             try {
@@ -23,7 +22,7 @@ public class Timer implements Runnable {
                 System.out.println("Thread was interrupted!");
             }
 
-            seconds--;
+            this.time--;
         }
 
 //        System.out.println();

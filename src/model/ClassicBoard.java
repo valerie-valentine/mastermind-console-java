@@ -15,6 +15,7 @@ public class ClassicBoard implements Board {
         this.answer = answer;
     }
 
+    @Override
     public boolean hasGuessBeenPlayed (Guess newGuess) {
         for (Guess previousGuess: guessHistory ) {
             if (Arrays.equals(previousGuess.getGuess(), newGuess.getGuess())){
@@ -24,6 +25,7 @@ public class ClassicBoard implements Board {
         return false;
     }
 
+    @Override
     public void evaluateUserGuess(Guess guess) {
         int correctNumber = 0;
         int correctLocation = 0;
@@ -48,27 +50,29 @@ public class ClassicBoard implements Board {
         guess.setCorrectLocation(correctLocation);
     }
 
+    @Override
     public void submitUserGuess (Guess guess) {
         this.guessHistory.add(guess);
 
         if (Arrays.equals(guess.getGuess(), answer)) {
-            this.gameStatus = "Won";
+            this.gameStatus = "WIN";
         }else {
             this.attempts--;
             if (this.attempts == 0) {
-                this.gameStatus = "Lost";
+                this.gameStatus = "LOSS";
             }
         }
     }
 
+    @Override
     public int getAttempts(){
         return this.attempts;
     }
-
+    @Override
     public String getAnswer() {
         return String.join("", this.answer);
     }
-
+    @Override
     public String getGameStatus() {
         return this.gameStatus;
     }

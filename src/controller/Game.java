@@ -1,29 +1,37 @@
 package controller;
 
 import model.*;
-import view.View;
-
-import java.sql.Time;
+import view.ClassicUI;
+import view.GameUI;
+import view.TimedUI;
 
 
 public class Game {
-    private View view;
-    private TimedBoard board;
+    private GameUI view;
+    private Board board;
 
     public Game () {
-        this.view = new View();
+        this.view = new ClassicUI();
     }
 
     public void startGame() {
         this.view.displayInstructions();
+        String mode = view.getGameMode();
         String levelInput = view.getDifficultyLevel();
         int codeLength = DifficultyLevel.valueOf(levelInput).getCodeLength();
         String[] secretCode = CodeMaker.generateRandomCode(codeLength);
         this.view.showDebugCode(secretCode);
 
         if (secretCode != null) {
-            this.board = new TimedBoard(secretCode, new Timer(1));
-            this.board.startTimer();
+            if (mode.equals("CLASSIC")) {
+                board = new ClassicBoard(secretCode);
+                view = new ClassicUI();
+            } else if (mode.equals("TIMED")) {
+                Timer timer = new Timer(20);
+                board = new TimedBoard(secretCode, timer);
+                view = new TimedUI();
+                ((TimedBoard) board).startTimer();
+            }
             playGame(codeLength);
         } else {
             view.showMessage("Oops! We couldn’t generate the secret code. Please try again.");
@@ -51,7 +59,7 @@ public class Game {
     }
 
     public void checkIfGameOver() {
-        boolean gameStatus = this.board.getGameStatus().equals("Won");
+        String gameStatus = this.board.getGameStatus();
         this.view.showGameOver(gameStatus, this.board.getAnswer());
     }
 

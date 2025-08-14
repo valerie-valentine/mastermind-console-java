@@ -1,10 +1,25 @@
 package view;
 
-import java.util.Objects;
 import java.util.Scanner;
 
-public class View {
+public class ClassicUI implements GameUI{
     private final Scanner scanner = new Scanner(System.in);
+
+    public String getGameMode() {
+        while (true) {
+            System.out.print("Please choose a game mode: CLASSIC, TIMED: ");
+            String userInput = scanner.nextLine().toUpperCase();
+
+
+            if (userInput.equals("CLASSIC")) {
+                return "CLASSIC";
+            } else if (userInput.equals("TIMED")) {
+                return "TIMED";
+            } else {
+                System.out.println("Invalid input. Please enter a valid choice: (CLASSIC), (TIMED)\n");
+            }
+        }
+    }
 
     public void displayInstructions() {
         System.out.println(AsciiArt.GAME_LOGO);
@@ -88,8 +103,8 @@ public class View {
         }
     }
 
-    public void showGameOver(boolean won, String answer){
-        if (won) {
+    public void showGameOver(String gameResult, String answer){
+        if (gameResult.equals("WIN")) {
             System.out.println(AsciiArt.WIN_LOGO);
             System.out.println("Congrats! You won :)." );
             System.out.println("The answer was " + answer + ".");
