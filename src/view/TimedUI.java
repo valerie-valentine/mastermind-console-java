@@ -57,7 +57,7 @@ public class TimedUI implements GameUI {
     public void showGameOver(String gameResult, String answer) {
         if (gameResult.equals("LOSS TIME")) {
             System.out.println(AsciiArt.LOST_LOGO);
-            System.out.println("RAN OUT TIME!!!!!!!!!!");
+            System.out.println("YOU RAN OUT OF TIME!!!!!!!!!!");
             System.out.println("Sorry!! You lose!!!!");
             System.out.println("The answer was " + answer + ".");
         } else {
