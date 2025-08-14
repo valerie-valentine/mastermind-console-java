@@ -1,9 +1,10 @@
 package model;
 
 public class Timer implements Runnable {
-    private int minutes;
+    int minutes;
+    private volatile boolean isTimeUp = false;
 
-    public Timer(int minutes) {
+    public Timer (int minutes) {
         this.minutes = minutes;
     }
 
@@ -14,7 +15,7 @@ public class Timer implements Runnable {
         while (seconds > 0) {
             int displayMinutes = seconds / 60;
             int displaySeconds = seconds % 60;
-            System.out.printf("\rTime left: %02d:%02d", displayMinutes, displaySeconds);
+//            System.out.printf("\rTime left: %02d:%02d", displayMinutes, displaySeconds);
 
             try {
                 Thread.sleep(1000);
@@ -25,7 +26,12 @@ public class Timer implements Runnable {
             seconds--;
         }
 
-        System.out.println();
-        System.out.println("Time's up!");
+//        System.out.println();
+//        System.out.println("Time's up!");
+        isTimeUp = true;
+    }
+
+    public boolean getIsTimeUp(){
+        return this.isTimeUp;
     }
 }

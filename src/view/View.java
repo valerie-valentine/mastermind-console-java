@@ -1,5 +1,6 @@
 package view;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class View {
@@ -16,7 +17,9 @@ public class View {
     }
 
     public void showDebugCode(String[] secretCode) {
-        System.out.println("Debugging String: " + String.join("", secretCode));
+        if (secretCode != null) {
+            System.out.println("Debugging String: " + String.join("", secretCode));
+        }
     }
 
     public void showMessage(String message) {

@@ -1,15 +1,14 @@
 package controller;
 
-import model.ClassicBoard;
-import model.CodeMaker;
-import model.DifficultyLevel;
-import model.Guess;
+import model.*;
 import view.View;
+
+import java.sql.Time;
 
 
 public class Game {
     private View view;
-    private ClassicBoard board;
+    private TimedBoard board;
 
     public Game () {
         this.view = new View();
@@ -23,7 +22,8 @@ public class Game {
         this.view.showDebugCode(secretCode);
 
         if (secretCode != null) {
-            this.board = new ClassicBoard(secretCode);
+            this.board = new TimedBoard(secretCode, new Timer(1));
+            this.board.startTimer();
             playGame(codeLength);
         } else {
             view.showMessage("Oops! We couldn’t generate the secret code. Please try again.");
