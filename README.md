@@ -2,6 +2,8 @@
 
 Mastermind is a classic code-breaking game where your goal is to crack the correct number combination before running out of guesses. This Java application features Classic and Timed modes, with optional background sound to enhance gameplay.
 
+Check out the web implementation: [MASTERMIND WEB APP](https://valerie-valentine.github.io/mastermind-frontend/) | [REPO](https://github.com/valerie-valentine/mastermind-backend/tree/mastermind-backend-v3.1)
+
 ## Classes & Responsibilities
 
 | Class / Interface | Description | Key Methods / Features |
